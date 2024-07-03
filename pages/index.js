@@ -9,6 +9,7 @@ import ForYouList from '../components/UI/ForYouList/ForYouList'
 import JustAdded from '../components/UI/JustAdded/JustAdded'
 import PosterView from '../components/UI/PosterView/PosterView'
 import AuthCheck from '../components/authCheck'
+import MediaRow from "../components/UI/MediaRow/MediaRow";
 
 export default function Home() {
 
@@ -26,9 +27,11 @@ export default function Home() {
   return AuthCheck(
     <MainLayout>
     <FeaturedMedia />
+    <MediaRow title="Movies" type="large-v" />
+    {/* <FeaturedMedia />
     <ForYouList />
     <JustAdded />
-    <PosterView />
+    <PosterView /> */}
   </MainLayout>
  
   )
