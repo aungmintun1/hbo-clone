@@ -1,4 +1,4 @@
-
+import { useStateContext } from '../../HBOProvider';
 
 const Account = (props) => {
   const loopComp = (comp, digit) => {
@@ -9,8 +9,9 @@ const Account = (props) => {
 
     return thumbnails;
   }
+  const globalState = useStateContext();
   return(
-    <div className="account">
+    <div className={`account ${globalState.accountMenu ? 'account--active' : '' }`}>
       <div className="account__details">
         <div className="account__title">My List</div>
         <div className="account__watch-list">

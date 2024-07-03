@@ -1,4 +1,4 @@
-
+import { useStateContext } from '../../HBOProvider';
 
 const SearchModal = (props) => {
   const loopComp = (comp, digit) => {
@@ -9,11 +9,14 @@ const SearchModal = (props) => {
 
     return thumbnails;
   }
+
+  const globalState = useStateContext();
+
   return(
-    <div className="search-modal">
+    <div className={`search-modal ${globalState.searchMenu ? 'search-modal--active' : ''}`}>
       <div className="search-modal__input-group ">
         <input className="search-modal__input" type="text" placeholder="search for a title" value="" />
-        <div className="search-modal__close-btn">
+        <div className="search-modal__close-btn" onClick={()=> globalState.setSearchMenu(false)}>
           <i className="fas fa-times" />
         </div>
       </div>
