@@ -1,7 +1,7 @@
 import Account from "../Account/Account"
 import SearchModal from "../SearchModal/SearchModal"
 import { useStateContext } from '../../HBOProvider';
-
+import Link from "next/link";
 
 const Header = (props) => {
   const globalState = useStateContext();
@@ -15,7 +15,9 @@ const Header = (props) => {
         <i className="fas fa-search"/>
       </div>
     </div>
+    <Link href='/'>
     <div className="top-header__logo"></div>
+    </Link>
     <div className="top-header__account" onClick={()=>{globalState.accountMenuOpen(!globalState.accountMenu); globalState.setSideNavOpen(false); }}>
       <img src="https://mighty.tools/mockmind-api/content/human/5.jpg" className="top-header__user-img"/>
       <div className="top-header__user-name">Bryant</div>
