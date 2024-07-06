@@ -1,44 +1,39 @@
 import React, { useContext, useState} from 'react';
+
 export const StateContext = React.createContext();
 
-export function useStateContext() {
-return useContext(StateContext)
+export function useStateContext(){
+  return useContext(StateContext)
 }
 
 export function HBOProvider({children}){
-    //set global variables here
-
-    const defaultImg ="https://mighty.tools/mockmind-api/content/human/5.jpg";
-
-    const [user, setUser] = useState('')
-    const createUserAction = (e) => {
+  const [user, setUser] = useState('')
+  const defaultUserImg = 'https://uifaces.co/our-content/donated/vIqzOHXj.jpg'
+  const createUserAction = (e) => {
     setUser(e.target.value)
-    console.log(user);
-    }
+    console.log(2+2)
+  }
+  const [sideNavOpen, setSideNavOpenAction] = useState(false)
+  const [accountModalOpen, setAccountModalOpenAction] = useState(false)
+  const [searchOpen, setSearchOpenAction] = useState(false)
 
-    const [sideNavOpen, setSideNavOpen] = useState(false)
-    const [accountMenu, accountMenuOpen] = useState(false)
-    const [searchMenu, setSearchMenu] = useState(false)
+  const thumbTypes = ['large-v', 'small-v', 'large-h', 'small-h']
 
-    const thumbTypes = ['large-v', 'small-v', 'large-h', 'small-h']
-
-return(
-<StateContext.Provider
-value={{
-    //pass down variables here
-    user,
-    createUserAction,
-    defaultImg,
-    sideNavOpen,
-    setSideNavOpen,
-    accountMenu,
-    accountMenuOpen,
-    searchMenu,
-    setSearchMenu,
-    thumbTypes
-
-}}>
-{children} 
-</StateContext.Provider>
-)
+  return(
+    <StateContext.Provider
+    value={{
+      user,
+      createUserAction,
+      defaultUserImg,
+      sideNavOpen,
+      setSideNavOpenAction,
+      accountModalOpen,
+      setAccountModalOpenAction,
+      searchOpen, 
+      setSearchOpenAction,
+      thumbTypes
+    }}>
+      {children}
+    </StateContext.Provider>
+  )
 }

@@ -27,6 +27,7 @@ export default function SingleMediaPage(props) {
 				offset={-400}
 				placeholder={<Placeholders title="Movies" type="large-v" />}>
 				<MediaRow
+					updateData={props.query.id}
 					title="Similar To This"
 					type="small-v"
 					mediaType={props.query.mediaType}
