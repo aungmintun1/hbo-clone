@@ -20,6 +20,8 @@ export function HBOProvider({children}){
     const [accountMenu, accountMenuOpen] = useState(false)
     const [searchMenu, setSearchMenu] = useState(false)
 
+    const thumbTypes = ['large-v', 'small-v', 'large-h', 'small-h']
+
 return(
 <StateContext.Provider
 value={{
@@ -32,7 +34,8 @@ value={{
     accountMenu,
     accountMenuOpen,
     searchMenu,
-    setSearchMenu
+    setSearchMenu,
+    thumbTypes
 
 }}>
 {children} 
