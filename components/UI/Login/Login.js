@@ -33,7 +33,7 @@ const showUsers = () => {
   return users.map((user) => {
     return(
       <div className="login-user__user-box" key={user.id} onClick={()=> selectUser(user.id)}>
-      <img className="login-user__user-img" src={globalState.defaultImg} />
+      <img className="login-user__user-img" src={globalState.defaultUserImg} />
       <div className="login-user__user-name">{user.user}</div>
     </div>
     )

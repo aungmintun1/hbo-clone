@@ -9,10 +9,10 @@ export function useStateContext(){
 
 export function HBOProvider({children}){
   const [user, setUser] = useState('')
-  const defaultUserImg = 'https://uifaces.co/our-content/donated/vIqzOHXj.jpg'
+  const defaultUserImg = 'https://mighty.tools/mockmind-api/content/human/5.jpg'
   const createUserAction = (e) => {
     setUser(e.target.value)
-    console.log(2+2)
+
   }
   const [sideNavOpen, setSideNavOpenAction] = useState(false)
   const [accountModalOpen, setAccountModalOpenAction] = useState(false)

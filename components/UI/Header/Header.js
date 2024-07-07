@@ -2,9 +2,18 @@ import Account from "../Account/Account";
 import SearchModal from "../SearchModal/SearchModal";
 import { useStateContext } from "../../HBOProvider";
 import Link from 'next/link'
+import ls from "local-storage";
 
 const Header = (props) => {
 	const globalState = useStateContext();
+
+	const users = ls('users');
+	//gets all users from local storage
+
+	
+	const name = users && users.length > 0 ? users[0].user : 'user';
+	// Get the first user's name
+	//if no user string is no user
 
 	return (
 		<header className={`top-header ${globalState.accountModalOpen || globalState.sideNavOpen ? 'top-header--menu-open' : ''}`}>
@@ -27,10 +36,10 @@ const Header = (props) => {
 				className="top-header__account"
 				onClick={() => globalState.setAccountModalOpenAction(!globalState.accountModalOpen)}>
 				<img
-					src="https://uifaces.co/our-content/donated/vIqzOHXj.jpg"
+					src={globalState.defaultUserImg}
 					className="top-header__user-img"
 				/>
-				<div className="top-header__user-name">Bryant</div>
+				<div className="top-header__user-name">{name}</div>
 			</div>
 			<Account />
 			<SearchModal />
