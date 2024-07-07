@@ -11,19 +11,6 @@ const SearchModal = (props) => {
 	const [text, setText] = useState("");
 	const router = useRouter();
 
-	// useEffect(async () => {
-	// 	try {
-	// 		let popData = await axios.get(
-	// 			`https://api.themoviedb.org/3/discover/movie?primary_release_year=2021&api_key=1db7688f317e15dd2ee2933dae838634&language=en-US`,
-	// 		);
-	// 		setPopData(popData.data.results.filter((item, i) => i < 14));
-
-	// 		setShowResults(false);
-	// 		console.log("popdata", popData.data.results);
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// }, []);
 
   useEffect(() => {
 		const fetchPopData = async () => {
@@ -41,6 +28,9 @@ const SearchModal = (props) => {
 
 		fetchPopData();
 	}, []);
+
+  //when search component appears, we fetch 14 popular movies into the section, which is stored in the popData array. 
+  //we also setShowResults false so that no search result movies come up.
 
 	useEffect(() => {
 		if (globalState.searchOpen) {
@@ -66,6 +56,10 @@ const SearchModal = (props) => {
 			console.log(error);
 		}
 	};
+
+// when inputting into search handleInput activates from onChange eventlistener
+// searchData now contains the results from the request
+// setShowResults is true which shows the searchResult components now 
 
 	const clickedThumbnail = (type, id, media_type) => {
 		if (type === "popular") {

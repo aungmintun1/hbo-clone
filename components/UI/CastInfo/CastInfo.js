@@ -4,13 +4,12 @@ import axios from 'axios';
 const CastInfo = (props) => {
   const [loadingData, setLoadingData] = useState(true);
 	const [credits, setCredits] = useState([]);
-
+//  https://api.themoviedb.org/3/tv/63174/credits?api_key=1db7688f317e15dd2ee2933dae838634&language=en-US
 	// /discover/movie?with_genres=28&primary_release_year=2021
 	useEffect(() => {
 		axios
 			.get(
-				`https://api.themoviedb.org/3/movie/${props.mediaId}/credits?api_key=1db7688f317e15dd2ee2933dae838634&language=en-US`,
-        //gets cast and crew data 
+				`https://api.themoviedb.org/3/${props.mediaType === 'movie' ? 'movie' : 'tv'}/${props.mediaId}/credits?api_key=1db7688f317e15dd2ee2933dae838634&language=en-US`,
 			)
 			.then(function (response) {
 				setCredits(response.data);
@@ -24,13 +23,13 @@ const CastInfo = (props) => {
 				console.log("Error Response For error for cast and crew");
 				console.log(error);
 			});
-	}, [credits]);
+	}, [props.updateData]);
 
   const showCast = () => {
     if(loadingData !== true){
-      return credits.cast.map((item) => {
+      return credits.cast.map((item, index) => {
         return(
-          <ul className="cast-info__crew">
+          <ul className="cast-info__crew" key={index}>
             <li>
               {item.character}
             </li>
@@ -47,9 +46,9 @@ const CastInfo = (props) => {
 
   const showCrew = () => {
     if(loadingData !== true){
-      return credits.crew.map((item) => {
+      return credits.crew.map((item, index) => {
         return(
-          <ul className="cast-info__crew">
+          <ul className="cast-info__crew" key={index}>
             <li>
               {item.job}
             </li>

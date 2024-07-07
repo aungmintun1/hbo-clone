@@ -13,6 +13,23 @@ import Placeholders from "../../components/UI/Placeholders/Placeholders";
 export default function SingleMediaPage(props) {
 	const router = useRouter();
 	const [mediaData, setMediaData] = useState(false);
+	// const { id } = router.query
+	console.log(props);
+	// useEffect(() => {
+	// 	axios
+	// 		.get(
+	// 			`https://api.themoviedb.org/3/movie/${props.query.id}?api_key=1db7688f317e15dd2ee2933dae838634&language=en-US`,
+	// 		)
+	// 		.then(function (response) {
+	// 			setMediaData(response.data);
+	// 			console.log(response);
+	// 		})
+	// 		.catch(function (error) {
+	// 			// handle error
+	// 			console.log("Error Response For ");
+	// 			console.log(error);
+	// 		});
+	// }, [mediaData]);
 
 	return AuthCheck(
 		<MainLayout>
@@ -22,6 +39,8 @@ export default function SingleMediaPage(props) {
 				location="In theaters and on HBO MAX. Streaming throughout May 23."
 				linkUrl="/movies/id"
 				type="single"
+				mediaType={props.query.mediaType}
+				mediaId={props.query.id}
 			/>
 			<LazyLoad
 				offset={-400}
@@ -34,7 +53,7 @@ export default function SingleMediaPage(props) {
 					endpoint={`${props.query.mediaType === 'movie' ? 'movie' : 'tv'}/${props.query.id}/similar?`}
 				/>
 			</LazyLoad>
-			<CastInfo mediaId={props.query.id} mediaType={props.mediaType}/>
+			<CastInfo mediaId={props.query.id} mediaType={props.query.mediaType} updateData={props.query.id}/>
 		</MainLayout>,
 	);
 }
